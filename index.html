@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iMAR Group — Industrial Automation</title>
+<meta name="description" content="iMAR Group: industrial automation, control panels, electronics repair, supply of automation components.">
+<style>
+:root{--navy:#0a1a4a;--blue:#1d4ed8;--cyan:#22d3ee;--red:#e11d2e;--bg:#f4f6fb;--tx:#16203a;--mut:#5b6785;--card:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.w{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff}
+header .w{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;font-size:22px;letter-spacing:.5px}
+.logo b{background:var(--red);padding:1px 7px;margin-left:6px;font-size:14px;border-radius:2px}
+nav{display:flex;gap:18px;font-size:15px}
+nav a{opacity:.85}nav a:hover{opacity:1}
+.lang{display:flex;gap:4px}
+.lang button{background:transparent;border:1px solid #ffffff55;color:#fff;padding:5px 9px;border-radius:6px;cursor:pointer;font-size:13px}
+.lang button.on{background:var(--red);border-color:var(--red)}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#1b2a8a 55%,#5b21b6 100%);color:#fff;padding:90px 0 80px}
+.hero h1{font-size:clamp(30px,5vw,50px);line-height:1.15;max-width:760px}
+.hero p{max-width:640px;margin:20px 0 32px;font-size:18px;opacity:.9}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:13px 26px;border-radius:8px;font-weight:600;margin-right:10px}
+.btn.o{background:transparent;border:1px solid #fff9}
+section{padding:68px 0}
+h2{font-size:30px;margin-bottom:12px;color:var(--navy)}
+.sub{color:var(--mut);max-width:720px;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px}
+.card{background:var(--card);border-radius:12px;padding:24px;border-top:3px solid var(--blue);box-shadow:0 2px 10px #0a1a4a14}
+.card h3{font-size:18px;margin-bottom:8px;color:var(--navy)}
+.card p{color:var(--mut);font-size:15px}
+.dark{background:var(--navy);color:#fff}
+.dark h2{color:#fff}.dark .sub{color:#c7d0ee}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#ffffff14;border:1px solid #ffffff30;padding:7px 14px;border-radius:99px;font-size:14px}
+.light .chip{background:#fff;border-color:#dfe4f2;color:var(--tx)}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.ct .card{border-top-color:var(--red)}
+.ct a{color:var(--blue)}
+footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align:center}
+.wa{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-btn{display:flex;align-items:center;gap:9px;background:#25d366;color:#fff;border:0;border-radius:99px;padding:13px 20px;font:600 15px inherit;font-family:inherit;cursor:pointer;box-shadow:0 6px 20px #0004}
+.wa-btn svg{width:24px;height:24px;fill:#fff}
+.wa-menu{display:none;flex-direction:column;gap:8px}
+.wa.open .wa-menu{display:flex}
+.wa-menu a{background:#fff;color:var(--tx);padding:11px 18px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 6px 20px #0003;white-space:nowrap}
+.wa-menu a:hover{background:#eafff2}
+@media(max-width:760px){nav{display:none}.wa-btn span{display:none}.wa-btn{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="w">
+  <a href="#top" class="logo">iMAR<b>GROUP</b></a>
+  <nav><a href="#about" data-t="n1"></a><a href="#services" data-t="n2"></a><a href="#brands" data-t="n3"></a><a href="#contacts" data-t="n4"></a></nav>
+  <div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button><button data-l="uz">UZ</button></div>
+</div></header>
+
+<div class="hero" id="top"><div class="w">
+  <h1 data-t="h1"></h1><p data-t="h1p"></p>
+  <a class="btn" href="#contacts" data-t="cta"></a><a class="btn o" href="#services" data-t="cta2"></a>
+</div></div>
+
+<section id="about"><div class="w">
+  <h2 data-t="ab"></h2><p class="sub" data-t="abp"></p>
+  <div class="grid" id="about-cards"></div>
+</div></section>
+
+<section id="services" class="dark"><div class="w">
+  <h2 data-t="sv"></h2><p class="sub" data-t="svp"></p>
+  <div class="grid" id="svc"></div>
+</div></section>
+
+<section><div class="w">
+  <h2 data-t="sp"></h2><p class="sub" data-t="spp"></p>
+  <div class="chips light" id="supply"></div>
+</div></section>
+
+<section id="brands" class="light" style="background:#fff"><div class="w">
+  <h2 data-t="br"></h2><p class="sub" data-t="brp"></p>
+  <div class="chips light" id="clients"></div>
+</div></section>
+
+<section id="contacts"><div class="w">
+  <h2 data-t="ct"></h2><p class="sub" data-t="ctp"></p>
+  <div class="ct">
+    <div class="card"><h3>🇹🇷 Türkiye</h3><p>Yeni, 1506. Sk. No:57, 54300 Hendek/Sakarya<br>
+      <a href="tel:+905395579854">+90 539 557 9854</a> · <a href="https://wa.me/905395579854">WhatsApp</a><br>
+      <a href="tel:+902646143267">0264 614 3267</a></p></div>
+    <div class="card"><h3>🇹🇲 Türkmenistan</h3><p>Mary şäheri, Lälezar Bagtyýarlyk 32<br>
+      <a href="tel:+99371815451">+993 71 815451</a> · <a href="https://wa.me/99371815451">WhatsApp</a><br>
+      <a href="tel:+99364730442">+993 64 730442</a></p></div>
+    <div class="card"><h3 data-t="em"></h3><p><a href="mailto:imarelektrikgenel@gmail.com">imarelektrikgenel@gmail.com</a><br>
+      <a href="https://www.imargroup.tr" target="_blank" rel="noopener">www.imargroup.tr</a></p></div>
+  </div>
+</div></section>
+
+<div class="wa" id="wa">
+  <div class="wa-menu">
+    <a id="wa-tr" target="_blank" rel="noopener" href="#">🇹🇷 Türkiye · +90 539 557 9854</a>
+    <a id="wa-tm" target="_blank" rel="noopener" href="#">🇹🇲 Türkmenistan · +993 71 815451</a>
+  </div>
+  <button class="wa-btn" id="wa-toggle" type="button" aria-label="WhatsApp">
+    <b style="font-size:20px;line-height:1">💬</b>
+    <span id="wa-label">WhatsApp</span>
+  </button>
+</div>
+
+<footer>© iMAR Group · iMAR Elektronik · EOS Otomasyon</footer>
+
+<script>
+var T={
+ru:{n1:"О компании",n2:"Услуги",n3:"Клиенты",n4:"Контакты",
+h1:"Промышленная автоматика и электроника под ключ",
+h1p:"Монтаж и наладка, программирование контроллеров, сборка щитов управления, ремонт электроники и поставка компонентов автоматики.",
+cta:"Связаться",cta2:"Наши услуги",
+ab:"О компании",abp:"iMAR Group объединяет две организации — iMAR Elektronik и EOS Otomasyon. Они дополняют друг друга, и вместе мы строим и налаживаем промышленное оборудование в Турции, России, Иране и США. Сейчас работаем над проектом в Узбекистане и открываемся в Туркменистане.",
+ac:[["Эффективность","Автоматизация повышает эффективность оборудования и скорость принятия решений: даже +5% к КПД агрегата приносит больше, чем сокращение штата."],["Опыт","Опыт на объектах в нескольких странах и работа с ведущими производителями оборудования."],["На связи","Отвечаем быстро и остаёмся на связи, даже когда проект уже реализован."]],
+sv:"Услуги",svp:"Любой продукт реализуем под ваши процессы, задачи и интеграции.",
+s:[["Монтаж и наладка","Установка отдельных агрегатов и целых технологических линий, подключение, пусконаладка и последующее обслуживание."],["Программирование","ПО для промышленных контроллеров (SIEMENS, OMRON и др.), АСУ ТП, HMI-панели и пульты, отладка на собственном стенде."],["Сборка щитов управления","Разработка ТЗ, подбор комплектующих, сборка шкафов и щитов, пусконаладка, помощь в сдаче контролирующим органам, гарантийное и постгарантийное обслуживание."],["Монтаж и демонтаж","Безопасный демонтаж, маркировка узлов и кабелей, упаковка для перевозки или консервации, минимальный простой производства."],["Ревизия и обслуживание","Периодическая ревизия и наладка оборудования, электроприводов и автоматики, выявление неисправностей, продление срока службы."],["Модернизация станков","Обновление механики, пневмо- и гидросистем и систем управления вместо покупки нового оборудования."],["Ремонт электроники","Ремонт на компонентном уровне: частотные преобразователи, сервоприводы, контроллеры, панели, блоки питания. Замена IGBT и модулей, восстановление плат."]],
+sp:"Поставка компонентов автоматики",spp:"Прямое сотрудничество с крупными брендами, эксклюзивное представительство нескольких из них в Турции и России. Поставляем отдельно и в комплекте, с лицензионным ПО.",
+su:["Датчики, термопары, концевики","Кнопки и выключатели","Энкодеры","Софтстартеры, пускатели, контакторы","Частотные преобразователи","Сервоприводы и драйверы","Инверторы и стабилизаторы","ПЛК-контроллеры","Коммутаторы Ethernet","Сенсорные панели управления","Автоматические дверные замки"],
+br:"Нас уже выбрали",brp:"Среди наших клиентов крупные производственные и строительные компании. Авторизованный сервисный партнёр: Danfoss, WEG, Vacon, Omron (Россия), Siemens, Schneider Electric (Турция).",
+ct:"Контакты",ctp:"Оставьте заявку, и наш специалист перезвонит и ответит на все вопросы. Работаем с юридическими лицами.",em:"Онлайн"},
+
+en:{n1:"About",n2:"Services",n3:"Clients",n4:"Contacts",
+h1:"Industrial automation and electronics, turnkey",
+h1p:"Installation and commissioning, controller programming, control panel assembly, electronics repair and supply of automation components.",
+cta:"Contact us",cta2:"Our services",
+ab:"About us",abp:"iMAR Group unites two companies, iMAR Elektronik and EOS Otomasyon. Together we build and commission industrial equipment in Turkey, Russia, Iran and the USA. We are now working on a project in Uzbekistan and entering Turkmenistan.",
+ac:[["Efficiency","Automation raises equipment efficiency and decision speed: even +5% on a unit's output brings more than cutting staff."],["Experience","Projects in several countries and work with leading equipment manufacturers."],["Always in touch","We answer quickly and stay in touch even after the project is delivered."]],
+sv:"Services",svp:"Every product is built around your processes, tasks and integrations.",
+s:[["Installation and commissioning","Installing single units and complete production lines, wiring, start-up and follow-up service."],["Programming","Software for industrial controllers (SIEMENS, OMRON and others), SCADA/process control, HMI panels and consoles, tested on our own test bench."],["Control panel assembly","Specification, component selection, panel and cabinet assembly, commissioning, help with certification, warranty and post-warranty service."],["Installation and dismantling","Safe dismantling, marking of units and cables, packing for transport or storage, minimal production downtime."],["Inspection and maintenance","Periodic inspection and tuning of equipment, drives and automation, early fault detection, longer service life."],["Machine modernization","Upgrading mechanics, pneumatics, hydraulics and control systems instead of buying new equipment."],["Electronics repair","Component-level repair: frequency converters, servo drives, controllers, panels, power supplies. IGBT and module replacement, board restoration."]],
+sp:"Supply of automation components",spp:"Direct cooperation with major brands and exclusive representation of several of them in Turkey and Russia. Supplied separately or as a set, with licensed software.",
+su:["Sensors, thermocouples, limit switches","Buttons and switches","Encoders","Soft starters, starters, contactors","Frequency converters","Servo drives and drivers","Inverters and stabilizers","PLC controllers","Ethernet switches","Touch control panels","Automatic door locks"],
+br:"Trusted by",brp:"Our clients include major industrial and construction companies. Authorized service partner: Danfoss, WEG, Vacon, Omron (Russia), Siemens, Schneider Electric (Turkey).",
+ct:"Contacts",ctp:"Send us a request and our specialist will call you back and answer all questions. We work with legal entities.",em:"Online"},
+
+uz:{n1:"Kompaniya haqida",n2:"Xizmatlar",n3:"Mijozlar",n4:"Aloqa",
+h1:"Sanoat avtomatikasi va elektronikasi — kalit topshirish asosida",
+h1p:"Montaj va sozlash, kontrollerlarni dasturlash, boshqaruv shitlarini yig‘ish, elektronika ta’miri va avtomatika komponentlarini yetkazib berish.",
+cta:"Bog‘lanish",cta2:"Xizmatlarimiz",
+ab:"Kompaniya haqida",abp:"iMAR Group ikki tashkilotni — iMAR Elektronik va EOS Otomasyonni birlashtiradi. Birgalikda Turkiya, Rossiya, Eron va AQShda sanoat uskunalarini qurdik va sozladik. Hozir O‘zbekistonda loyiha ustida ishlayapmiz va Turkmanistonda faoliyatni boshlayapmiz.",
+ac:[["Samaradorlik","Avtomatlashtirish uskunalar samaradorligini va qaror qabul qilish tezligini oshiradi: agregat unumdorligining 5% ga o‘sishi xodimlarni qisqartirishdan ko‘ra ko‘proq foyda beradi."],["Tajriba","Bir necha mamlakatdagi obyektlar va yetakchi ishlab chiqaruvchilar bilan ishlash tajribasi."],["Doim aloqada","Tez javob beramiz va loyiha yakunlangandan keyin ham aloqada bo‘lamiz."]],
+sv:"Xizmatlar",svp:"Har qanday mahsulotni sizning jarayonlaringiz, vazifalaringiz va integratsiyalaringizga moslab amalga oshiramiz.",
+s:[["Montaj va sozlash","Alohida qurilmalar va to‘liq texnologik liniyalarni o‘rnatish, ulash, ishga tushirish va keyingi xizmat ko‘rsatish."],["Dasturlash","Sanoat kontrollerlari (SIEMENS, OMRON va boshqalar) uchun dastur, ATBT (АСУ ТП), HMI panellari va pultlar, o‘z stendimizda sinov."],["Boshqaruv shitlarini yig‘ish","Texnik topshiriq, butlovchi qismlarni tanlash, shit va shkaflarni yig‘ish, ishga tushirish, nazorat organlariga topshirishda yordam, kafolat va kafolatdan keyingi xizmat."],["Montaj va demontaj","Xavfsiz demontaj, uzel va kabellarni markalash, tashish yoki saqlash uchun qadoqlash, ishlab chiqarish to‘xtab qolishini minimallashtirish."],["Reviziya va xizmat ko‘rsatish","Uskunalar, elektr yuritmalar va avtomatikani davriy tekshirish va sozlash, nosozliklarni o‘z vaqtida aniqlash, xizmat muddatini uzaytirish."],["Stanoklarni modernizatsiya qilish","Yangi uskuna sotib olish o‘rniga mexanika, pnevmo- va gidrotizimlar hamda boshqaruv tizimlarini yangilash."],["Elektronika ta’miri","Komponent darajasida ta’mir: chastota o‘zgartirgichlar, servoyuritmalar, kontrollerlar, panellar, quvvat bloklari. IGBT va modullarni almashtirish, platalarni tiklash."]],
+sp:"Avtomatika komponentlarini yetkazib berish",spp:"Yirik brendlar bilan to‘g‘ridan-to‘g‘ri hamkorlik, ulardan bir nechtasining Turkiya va Rossiyadagi eksklyuziv vakili. Alohida yoki komplekt holida, litsenziyalangan dastur bilan yetkazamiz.",
+su:["Datchiklar, termojuftlar, konsevoy o‘chirgichlar","Tugmalar va o‘chirgichlar","Enkoderlar","Soft-starterlar, starterlar, kontaktorlar","Chastota o‘zgartirgichlar","Servoyuritmalar va drayverlar","Invertorlar va stabilizatorlar","PLK kontrollerlar","Ethernet kommutatorlari","Sensorli boshqaruv panellari","Avtomatik eshik qulflari"],
+br:"Bizni tanlashgan",brp:"Mijozlarimiz orasida yirik ishlab chiqarish va qurilish kompaniyalari bor. Vakolatli servis hamkori: Danfoss, WEG, Vacon, Omron (Rossiya), Siemens, Schneider Electric (Turkiya).",
+ct:"Aloqa",ctp:"So‘rov qoldiring — mutaxassisimiz qo‘ng‘iroq qilib, barcha savollarga javob beradi. Biz yuridik shaxslar bilan ishlaymiz.",em:"Onlayn"}
+};
+var CLIENTS=["OBA Makarna","Pınar","Linde","ZF","Toyota Boshoku","Otokar","SEW Eurodrive","Şişecam","Kale","Prysmian","SICK","Yazaki","Doğuş","Çamsan","Aktül Kağıt","Tırsan","TAV","Balluff","Prometeon","Sakarya OSB"];
+function $(s){return document.querySelector(s)}
+function chips(el,arr){el.innerHTML=arr.map(function(x){return '<span class="chip">'+x+'</span>'}).join('')}
+function cards(el,arr){el.innerHTML=arr.map(function(x){return '<div class="card"><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join('')}
+function setLang(l){
+  var d=T[l];document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(function(e){e.textContent=d[e.dataset.t]});
+  cards($('#about-cards'),d.ac);cards($('#svc'),d.s);chips($('#supply'),d.su);chips($('#clients'),CLIENTS);
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  var w=WA[l],q='?text='+encodeURIComponent(w[1]);
+  $('#wa-label').textContent=w[0];
+  $('#wa-tr').href='https://wa.me/905395579854'+q;
+  $('#wa-tm').href='https://wa.me/99371815451'+q;
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+var WA={ru:["Написать в WhatsApp","Здравствуйте! Хочу узнать об услугах iMAR Group."],en:["Chat on WhatsApp","Hello! I would like to learn about iMAR Group services."],uz:["WhatsApp’da yozish","Assalomu alaykum! iMAR Group xizmatlari haqida bilmoqchiman."]};
+$('#wa-toggle').onclick=function(){$('#wa').classList.toggle('open')};
+document.addEventListener('click',function(e){if(!$('#wa').contains(e.target))$('#wa').classList.remove('open')});
+document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
+var init='ru';try{var s=localStorage.getItem('lang');if(s&&T[s])init=s}catch(e){}
+setLang(init);
+</script>
+</body>
+</html>
