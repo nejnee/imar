@@ -62,6 +62,12 @@ footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align
 .ph img{width:100%;display:block;border-radius:10px;margin-bottom:12px;object-fit:cover}
 @media(max-width:760px){.split{grid-template-columns:1fr}}
 .mbox .btn{margin-top:8px}
+.mbox{padding:34px 36px}
+.mbox p{text-align:justify;hyphens:auto;-webkit-hyphens:auto;line-height:1.75;font-size:16px;margin-bottom:14px}
+.mbox ul{list-style:none;margin:8px 0 18px;padding:0;columns:2;column-gap:32px}
+.mbox li{break-inside:avoid;position:relative;padding:9px 0 9px 24px;margin:0;border-bottom:1px solid #e8ecf6;line-height:1.5}
+.mbox li:before{content:"";position:absolute;left:2px;top:17px;width:9px;height:9px;background:var(--red);border-radius:2px}
+@media(max-width:760px){.mbox{padding:26px 20px}.mbox ul{columns:1}.mbox p{text-align:left}}
 @media(max-width:760px){nav{display:none}.wa-btn span{display:none}.wa-btn{padding:14px}}
 </style>
 </head>
@@ -209,13 +215,13 @@ uz:[
 [["Komponent darajasidagi ta’mirga ixtisoslashganmiz: korroziya, mexanik va termik ta’sirdan zarar ko‘rgan platalarni tiklash, diskret elementlar, mikrosxemalar, ventilyatorlar va transformatorlarni almashtirish. Chastota o‘zgartirgichlar, servoyuritmalar, kontrollerlar, boshqaruv panellari va quvvat bloklarini ta’mirlaymiz."],["IGBT va to‘g‘rilagich modullarini almashtirish va tiklash","Boshqaruv kanallarini tiklash","Uzel va bloklarni to‘liq qismlarga ajratib tozalash","Parametrlash, ish sozlamalarini tiklash","Ishga tushirish-sozlash","Yo‘lakchalar va o‘tish teshiklarini tiklash"],["Rossiyada Danfoss, WEG, Vacon, Omron va Turkiyada Siemens, Schneider Electric vakolatli servis hamkoriimiz. Faqat yuridik shaxslar bilan ishlaymiz."]]
 ]};
 /* Фото для окон услуг: номер услуги (0 = Монтаж и наладка) -> список файлов. Добавляйте новые имена в список. */
-var PH={0:["fabricstart.png"]};
+var PH={0:["Fabricstart.png"]};
 function openSvc(i){
   var l=document.documentElement.lang,d=T[l],x=D[l][i],h='<h3>'+d.s[i][0]+'</h3>';
   var ph=PH[i]||[],ps=x[0].slice(),tl=[],pp=function(a){return a.map(function(t){return '<p>'+t+'</p>'}).join('')};
   if(ph.length){
     if(x[1].length)tl=[ps.pop()];
-    h+='<div class="split"><div>'+pp(ps)+'</div><div class="ph">'+ph.map(function(f){return '<img src="'+f+'" alt="'+d.s[i][0]+'" onerror="this.style.display=\'none\'">'}).join('')+'</div></div>'+pp(tl);
+    h+='<div class="split"><div>'+pp(ps)+'</div><div class="ph">'+ph.map(function(f){return '<img src="'+f+'" alt="'+d.s[i][0]+'" onerror="var q=this.closest(\'.split\');if(q)q.style.gridTemplateColumns=\'1fr\';this.style.display=\'none\'">'}).join('')+'</div></div>'+pp(tl);
   }else h+=pp(ps);
   if(x[1].length)h+='<ul>'+x[1].map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul>';
   x[2].forEach(function(p){h+='<p>'+p+'</p>'});
