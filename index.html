@@ -41,6 +41,10 @@ h2{font-size:30px;margin-bottom:12px;color:var(--navy)}
 .ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 .ct .card{border-top-color:var(--red)}
 .ct a{color:var(--blue)}
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.lg{background:#fff;border:1px solid #e3e8f4;border-radius:10px;height:88px;display:flex;align-items:center;justify-content:center;padding:12px}
+.lg img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+@media(max-width:760px){.logos{grid-template-columns:repeat(2,1fr)}}
 footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align:center}
 .wa{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 .wa-btn{display:flex;align-items:center;gap:9px;background:#25d366;color:#fff;border:0;border-radius:99px;padding:13px 20px;font:600 15px inherit;font-family:inherit;cursor:pointer;box-shadow:0 6px 20px #0004}
@@ -110,7 +114,7 @@ footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align
 
 <section id="brands" class="light" style="background:#fff"><div class="w">
   <h2 data-t="br"></h2><p class="sub" data-t="brp"></p>
-  <div class="chips light" id="clients"></div>
+  <div class="logos" id="clients"></div>
 </div></section>
 
 <section id="contacts"><div class="w">
@@ -180,14 +184,14 @@ su:["Datchiklar, termojuftlar, konsevoy o‘chirgichlar","Tugmalar va o‘chirgi
 br:"Bizni tanlashgan",brp:"Mijozlarimiz orasida yirik ishlab chiqarish va qurilish kompaniyalari bor. Vakolatli servis hamkori: Danfoss, WEG, Vacon, Omron (Rossiya), Siemens, Schneider Electric (Turkiya).",
 ct:"Aloqa",ctp:"So‘rov qoldiring — mutaxassisimiz qo‘ng‘iroq qilib, barcha savollarga javob beradi. Biz yuridik shaxslar bilan ishlaymiz.",em:"Onlayn"}
 };
-var CLIENTS=["OBA Makarna","Pınar","Linde","ZF","Toyota Boshoku","Otokar","SEW Eurodrive","Şişecam","Kale","Prysmian","SICK","Yazaki","Doğuş","Çamsan","Aktül Kağıt","Tırsan","TAV","Balluff","Prometeon","Sakarya OSB"];
+var LOGOS=["oba", "asas", "b", "dogus", "ak", "altintar", "isik", "cp", "linde", "zf", "tuvasas", "pinar", "ankara", "demisas", "vitra", "yazaki", "vespro", "enda", "senpilic", "aktul", "sakarya", "sasa", "prysmian", "prometeon", "egekimya", "balluff", "sick", "tempapano", "yalcinkayalar", "kale", "can", "camsan", "toyota", "sakarya1", "akisik", "dydo", "goldagi", "egesil", "tav", "sew", "otokar", "alimex", "ibb", "evyapport", "sisecam", "tirsan", "kurtek", "adapazari", "gun"];
 function $(s){return document.querySelector(s)}
 function chips(el,arr){el.innerHTML=arr.map(function(x){return '<span class="chip">'+x+'</span>'}).join('')}
 function cards(el,arr){el.innerHTML=arr.map(function(x){return '<div class="card"><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join('')}
 function setLang(l){
   var d=T[l];document.documentElement.lang=l;
   document.querySelectorAll('[data-t]').forEach(function(e){e.textContent=d[e.dataset.t]});
-  cards($('#about-cards'),d.ac);$('#svc').innerHTML=d.s.map(function(x,i){return '<div class="card cl" onclick="openSvc('+i+')"><h3>'+x[0]+'</h3><p>'+x[1]+'</p><span class="more">'+M[l][0]+'</span></div>'}).join('');chips($('#supply'),d.su);chips($('#clients'),CLIENTS);
+  cards($('#about-cards'),d.ac);$('#svc').innerHTML=d.s.map(function(x,i){return '<div class="card cl" onclick="openSvc('+i+')"><h3>'+x[0]+'</h3><p>'+x[1]+'</p><span class="more">'+M[l][0]+'</span></div>'}).join('');chips($('#supply'),d.su);$('#clients').innerHTML=LOGOS.map(function(n){return '<div class="lg"><img src="logos/'+n+'.jpg" alt="'+n+'" loading="lazy"></div>'}).join('');
   document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
   var w=WA[l],q='?text='+encodeURIComponent(w[1]);
   $('#wa-label').textContent=w[0];
