@@ -61,6 +61,10 @@ footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align
 .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;margin-bottom:6px}
 .ph img{width:100%;display:block;border-radius:10px;margin-bottom:12px;object-fit:cover}
 @media(max-width:760px){.split{grid-template-columns:1fr}}
+.split{align-items:stretch}
+.ph{display:flex;flex-direction:column;gap:14px}
+.ph img{flex:1 1 0;height:0;min-height:150px;margin:0;object-fit:cover}
+@media(max-width:760px){.ph img{flex:none;height:auto;min-height:0}}
 .mbox .btn{margin-top:8px}
 .mbox{padding:34px 36px}
 .mbox p{text-align:justify;hyphens:auto;-webkit-hyphens:auto;line-height:1.75;font-size:16px;margin-bottom:14px}
@@ -215,7 +219,7 @@ uz:[
 [["Komponent darajasidagi ta’mirga ixtisoslashganmiz: korroziya, mexanik va termik ta’sirdan zarar ko‘rgan platalarni tiklash, diskret elementlar, mikrosxemalar, ventilyatorlar va transformatorlarni almashtirish. Chastota o‘zgartirgichlar, servoyuritmalar, kontrollerlar, boshqaruv panellari va quvvat bloklarini ta’mirlaymiz."],["IGBT va to‘g‘rilagich modullarini almashtirish va tiklash","Boshqaruv kanallarini tiklash","Uzel va bloklarni to‘liq qismlarga ajratib tozalash","Parametrlash, ish sozlamalarini tiklash","Ishga tushirish-sozlash","Yo‘lakchalar va o‘tish teshiklarini tiklash"],["Rossiyada Danfoss, WEG, Vacon, Omron va Turkiyada Siemens, Schneider Electric vakolatli servis hamkoriimiz. Faqat yuridik shaxslar bilan ishlaymiz."]]
 ]};
 /* Фото для окон услуг: номер услуги (0 = Монтаж и наладка) -> список файлов. Добавляйте новые имена в список. */
-var PH={0:["fabricstart.jpg"]};
+var PH={0:["fabricstart.jpg","fabric2.jpg"]};
 function openSvc(i){
   var l=document.documentElement.lang,d=T[l],x=D[l][i],h='<h3>'+d.s[i][0]+'</h3>';
   var ph=PH[i]||[],ps=x[0].slice(),tl=[],pp=function(a){return a.map(function(t){return '<p>'+t+'</p>'}).join('')};
