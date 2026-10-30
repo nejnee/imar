@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iMAR Group — Industrial Automation</title>
+<meta name="description" content="iMAR Group: industrial automation, control panels, electronics repair, supply of automation components.">
+<style>
+:root{--navy:#0a1a4a;--blue:#1d4ed8;--cyan:#22d3ee;--red:#e11d2e;--bg:#f4f6fb;--tx:#16203a;--mut:#5b6785;--card:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.w{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff}
+header .w{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;font-size:22px;letter-spacing:.5px}
+.logo b{background:var(--red);padding:1px 7px;margin-left:6px;font-size:14px;border-radius:2px}
+nav{display:flex;gap:18px;font-size:15px}
+nav a{opacity:.85}nav a:hover{opacity:1}
+.lang{display:flex;gap:4px}
+.lang button{background:transparent;border:1px solid #ffffff55;color:#fff;padding:5px 9px;border-radius:6px;cursor:pointer;font-size:13px}
+.lang button.on{background:var(--red);border-color:var(--red)}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#1b2a8a 55%,#5b21b6 100%);color:#fff;padding:90px 0 80px}
+.hero h1{font-size:clamp(30px,5vw,50px);line-height:1.15;max-width:760px}
+.hero p{max-width:640px;margin:20px 0 32px;font-size:18px;opacity:.9}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:13px 26px;border-radius:8px;font-weight:600;margin-right:10px}
+.btn.o{background:transparent;border:1px solid #fff9}
+section{padding:68px 0}
+h2{font-size:30px;margin-bottom:12px;color:var(--navy)}
+.sub{color:var(--mut);max-width:720px;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px}
+.card{background:var(--card);border-radius:12px;padding:24px;border-top:3px solid var(--blue);box-shadow:0 2px 10px #0a1a4a14}
+.card h3{font-size:18px;margin-bottom:8px;color:var(--navy)}
+.card p{color:var(--mut);font-size:15px}
+.dark{background:var(--navy);color:#fff}
+.dark h2{color:#fff}.dark .sub{color:#c7d0ee}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#ffffff14;border:1px solid #ffffff30;padding:7px 14px;border-radius:99px;font-size:14px}
+.light .chip{background:#fff;border-color:#dfe4f2;color:var(--tx)}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.ct .card{border-top-color:var(--red)}
+.ct a{color:var(--blue)}
+footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align:center}
+.wa{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-btn{display:flex;align-items:center;gap:9px;background:#25d366;color:#fff;border:0;border-radius:99px;padding:13px 20px;font:600 15px inherit;font-family:inherit;cursor:pointer;box-shadow:0 6px 20px #0004}
+.wa-btn svg{width:24px;height:24px;fill:#fff}
+.wa-menu{display:none;flex-direction:column;gap:8px}
+.wa.open .wa-menu{display:flex}
+.wa-menu a{background:#fff;color:var(--tx);padding:11px 18px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 6px 20px #0003;white-space:nowrap}
+.wa-menu a:hover{background:#eafff2}
+.card.cl{cursor:pointer;transition:transform .15s}.card.cl:hover{transform:translateY(-3px)}
+.card .more{display:inline-block;margin-top:12px;color:var(--blue);font-weight:600;font-size:14px}
+.modal{display:none;position:fixed;inset:0;z-index:30;background:#050c2acc;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.mbox{background:#fff;color:var(--tx);border-radius:14px;max-width:720px;width:100%;max-height:88vh;overflow:auto;padding:30px;position:relative;border-top:4px solid var(--red)}
+.mbox h3{font-size:24px;color:var(--navy);margin-bottom:14px;padding-right:30px}
+.mbox p{margin-bottom:12px}.mbox ul{margin:0 0 14px 20px}.mbox li{margin-bottom:4px}
+.mx{position:absolute;right:14px;top:10px;background:none;border:0;font-size:30px;cursor:pointer;color:var(--mut)}
+.mbox.wide{max-width:960px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;margin-bottom:6px}
+.ph img{width:100%;display:block;border-radius:10px;margin-bottom:12px;object-fit:cover}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.mbox .btn{margin-top:8px}
+.mbox{padding:34px 36px}
+.mbox p{text-align:justify;hyphens:auto;-webkit-hyphens:auto;line-height:1.75;font-size:16px;margin-bottom:14px}
+.mbox ul{list-style:none;margin:8px 0 18px;padding:0;columns:2;column-gap:32px}
+.mbox li{break-inside:avoid;position:relative;padding:9px 0 9px 24px;margin:0;border-bottom:1px solid #e8ecf6;line-height:1.5}
+.mbox li:before{content:"";position:absolute;left:2px;top:17px;width:9px;height:9px;background:var(--red);border-radius:2px}
+@media(max-width:760px){.mbox{padding:26px 20px}.mbox ul{columns:1}.mbox p{text-align:left}}
+@media(max-width:760px){nav{display:none}.wa-btn span{display:none}.wa-btn{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="w">
+  <a href="#top" class="logo">iMAR<b>GROUP</b></a>
+  <nav><a href="#about" data-t="n1"></a><a href="#services" data-t="n2"></a><a href="#brands" data-t="n3"></a><a href="#contacts" data-t="n4"></a></nav>
+  <div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button><button data-l="uz">UZ</button></div>
+</div></header>
+
+<div class="hero" id="top"><div class="w">
+  <h1 data-t="h1"></h1><p data-t="h1p"></p>
+  <a class="btn" href="#contacts" data-t="cta"></a><a class="btn o" href="#services" data-t="cta2"></a>
+</div></div>
+
+<section id="about"><div class="w">
+  <h2 data-t="ab"></h2><p class="sub" data-t="abp"></p>
+  <div class="grid" id="about-cards"></div>
+</div></section>
+
+<section id="services" class="dark"><div class="w">
+  <h2 data-t="sv"></h2><p class="sub" data-t="svp"></p>
+  <div class="grid" id="svc"></div>
+</div></section>
+
+<section><div class="w">
+  <h2 data-t="sp"></h2><p class="sub" data-t="spp"></p>
+  <div class="chips light" id="supply"></div>
+</div></section>
+
+<section id="brands" class="light" style="background:#fff"><div class="w">
+  <h2 data-t="br"></h2><p class="sub" data-t="brp"></p>
+  <div class="chips light" id="clients"></div>
+</div></section>
+
+<section id="contacts"><div class="w">
+  <h2 data-t="ct"></h2><p class="sub" data-t="ctp"></p>
+  <div class="ct">
+    <div class="card"><h3>🇹🇷 Türkiye</h3><p>Yeni, 1506. Sk. No:57, 54300 Hendek/Sakarya<br>
+      <a href="tel:+905395579854">+90 539 557 9854</a> · <a href="https://wa.me/905395579854">WhatsApp</a><br>
+      <a href="tel:+902646143267">0264 614 3267</a></p></div>
+    <div class="card"><h3 data-t="em"></h3><p><a href="mailto:imarelektrikgenel@gmail.com">imarelektrikgenel@gmail.com</a><br>
+      <a href="https://www.imargroup.tr" target="_blank" rel="noopener">www.imargroup.tr</a></p></div>
+  </div>
+</div></section>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeSvc()"><div class="mbox" id="mbox"><button class="mx" type="button" onclick="closeSvc()" aria-label="Close">×</button><div id="mbody"></div></div></div>
+
+<div class="wa" id="wa">
+  <div class="wa-menu">
+    <a id="wa-tr" target="_blank" rel="noopener" href="#">🇹🇷 Türkiye · +90 539 557 9854</a>
+    <a id="wa-tm" target="_blank" rel="noopener" href="#">🇹🇲 Türkmenistan · +993 71 815451</a>
+  </div>
+  <button class="wa-btn" id="wa-toggle" type="button" aria-label="WhatsApp">
+    <b style="font-size:20px;line-height:1">💬</b>
+    <span id="wa-label">WhatsApp</span>
+  </button>
+</div>
+
+<footer>© iMAR Group</footer>
+
+<script>
+var T={
+ru:{n1:"О компании",n2:"Услуги",n3:"Клиенты",n4:"Контакты",
+h1:"Промышленная автоматика и электроника под ключ",
+h1p:"Монтаж и наладка, программирование контроллеров, сборка щитов управления, ремонт электроники и поставка компонентов автоматики.",
+cta:"Связаться",cta2:"Наши услуги",
+ab:"О компании",abp:"Мы строим и налаживаем промышленное оборудование в Турции, России, Иране и США. Сейчас работаем над проектом в Узбекистане и открываемся в Туркменистане. Дополнительно предлагаем комплексные поставки комплектующих, запасных частей и компонентов для оборудования и систем промышленной автоматизации.",
+ac:[["Эффективность","Автоматизация повышает эффективность оборудования и скорость принятия решений: даже +5% к КПД агрегата приносит больше, чем сокращение штата."],["Опыт","Опыт на объектах в нескольких странах и работа с ведущими производителями оборудования."],["На связи","Отвечаем быстро и остаёмся на связи, даже когда проект уже реализован."]],
+sv:"Услуги",svp:"Любой продукт реализуем под ваши процессы, задачи и интеграции.",
+s:[["Монтаж и наладка","Установка отдельных агрегатов и целых технологических линий, подключение, пусконаладка и последующее обслуживание."],["Программирование","ПО для промышленных контроллеров (SIEMENS, OMRON и др.), АСУ ТП, HMI-панели и пульты, отладка на собственном стенде."],["Сборка щитов управления","Разработка ТЗ, подбор комплектующих, сборка шкафов и щитов, пусконаладка, помощь в сдаче контролирующим органам, гарантийное и постгарантийное обслуживание."],["Монтаж и демонтаж","Безопасный демонтаж, маркировка узлов и кабелей, упаковка для перевозки или консервации, минимальный простой производства."],["Ревизия и обслуживание","Периодическая ревизия и наладка оборудования, электроприводов и автоматики, выявление неисправностей, продление срока службы."],["Модернизация станков","Обновление механики, пневмо- и гидросистем и систем управления вместо покупки нового оборудования."],["Ремонт электроники","Ремонт на компонентном уровне: частотные преобразователи, сервоприводы, контроллеры, панели, блоки питания. Замена IGBT и модулей, восстановление плат."]],
+sp:"Поставка компонентов автоматики",spp:"Прямое сотрудничество с крупными брендами, эксклюзивное представительство нескольких из них в Турции и России. Поставляем отдельно и в комплекте, с лицензионным ПО.",
+su:["Датчики, термопары, концевики","Кнопки и выключатели","Энкодеры","Софтстартеры, пускатели, контакторы","Частотные преобразователи","Сервоприводы и драйверы","Инверторы и стабилизаторы","ПЛК-контроллеры","Коммутаторы Ethernet","Сенсорные панели управления","Автоматические дверные замки"],
+br:"Нас уже выбрали",brp:"Среди наших клиентов крупные производственные и строительные компании. Авторизованный сервисный партнёр: Danfoss, WEG, Vacon, Omron (Россия), Siemens, Schneider Electric (Турция).",
+ct:"Контакты",ctp:"Оставьте заявку, и наш специалист перезвонит и ответит на все вопросы. Работаем с юридическими лицами.",em:"Онлайн"},
+
+en:{n1:"About",n2:"Services",n3:"Clients",n4:"Contacts",
+h1:"Industrial automation and electronics, turnkey",
+h1p:"Installation and commissioning, controller programming, control panel assembly, electronics repair and supply of automation components.",
+cta:"Contact us",cta2:"Our services",
+ab:"About us",abp:"We build and commission industrial equipment in Turkey, Russia, Iran and the USA. We are currently working on a project in Uzbekistan and opening in Turkmenistan. We also offer comprehensive supply of components, spare parts and parts for industrial automation equipment and systems.",
+ac:[["Efficiency","Automation raises equipment efficiency and decision speed: even +5% on a unit's output brings more than cutting staff."],["Experience","Projects in several countries and work with leading equipment manufacturers."],["Always in touch","We answer quickly and stay in touch even after the project is delivered."]],
+sv:"Services",svp:"Every product is built around your processes, tasks and integrations.",
+s:[["Installation and commissioning","Installing single units and complete production lines, wiring, start-up and follow-up service."],["Programming","Software for industrial controllers (SIEMENS, OMRON and others), SCADA/process control, HMI panels and consoles, tested on our own test bench."],["Control panel assembly","Specification, component selection, panel and cabinet assembly, commissioning, help with certification, warranty and post-warranty service."],["Installation and dismantling","Safe dismantling, marking of units and cables, packing for transport or storage, minimal production downtime."],["Inspection and maintenance","Periodic inspection and tuning of equipment, drives and automation, early fault detection, longer service life."],["Machine modernization","Upgrading mechanics, pneumatics, hydraulics and control systems instead of buying new equipment."],["Electronics repair","Component-level repair: frequency converters, servo drives, controllers, panels, power supplies. IGBT and module replacement, board restoration."]],
+sp:"Supply of automation components",spp:"Direct cooperation with major brands and exclusive representation of several of them in Turkey and Russia. Supplied separately or as a set, with licensed software.",
+su:["Sensors, thermocouples, limit switches","Buttons and switches","Encoders","Soft starters, starters, contactors","Frequency converters","Servo drives and drivers","Inverters and stabilizers","PLC controllers","Ethernet switches","Touch control panels","Automatic door locks"],
+br:"Trusted by",brp:"Our clients include major industrial and construction companies. Authorized service partner: Danfoss, WEG, Vacon, Omron (Russia), Siemens, Schneider Electric (Turkey).",
+ct:"Contacts",ctp:"Send us a request and our specialist will call you back and answer all questions. We work with legal entities.",em:"Online"},
+
+uz:{n1:"Kompaniya haqida",n2:"Xizmatlar",n3:"Mijozlar",n4:"Aloqa",
+h1:"Sanoat avtomatikasi va elektronikasi — kalit topshirish asosida",
+h1p:"Montaj va sozlash, kontrollerlarni dasturlash, boshqaruv shitlarini yig‘ish, elektronika ta’miri va avtomatika komponentlarini yetkazib berish.",
+cta:"Bog‘lanish",cta2:"Xizmatlarimiz",
+ab:"Kompaniya haqida",abp:"Biz Turkiya, Rossiya, Eron va AQShda sanoat uskunalarini quramiz va sozlaymiz. Hozir O‘zbekistonda loyiha ustida ishlayapmiz va Turkmanistonda faoliyatni boshlayapmiz. Bundan tashqari, sanoat avtomatlashtirish uskunalari va tizimlari uchun butlovchi qismlar, ehtiyot qismlar va komponentlarni kompleks yetkazib beramiz.",
+ac:[["Samaradorlik","Avtomatlashtirish uskunalar samaradorligini va qaror qabul qilish tezligini oshiradi: agregat unumdorligining 5% ga o‘sishi xodimlarni qisqartirishdan ko‘ra ko‘proq foyda beradi."],["Tajriba","Bir necha mamlakatdagi obyektlar va yetakchi ishlab chiqaruvchilar bilan ishlash tajribasi."],["Doim aloqada","Tez javob beramiz va loyiha yakunlangandan keyin ham aloqada bo‘lamiz."]],
+sv:"Xizmatlar",svp:"Har qanday mahsulotni sizning jarayonlaringiz, vazifalaringiz va integratsiyalaringizga moslab amalga oshiramiz.",
+s:[["Montaj va sozlash","Alohida qurilmalar va to‘liq texnologik liniyalarni o‘rnatish, ulash, ishga tushirish va keyingi xizmat ko‘rsatish."],["Dasturlash","Sanoat kontrollerlari (SIEMENS, OMRON va boshqalar) uchun dastur, ATBT (АСУ ТП), HMI panellari va pultlar, o‘z stendimizda sinov."],["Boshqaruv shitlarini yig‘ish","Texnik topshiriq, butlovchi qismlarni tanlash, shit va shkaflarni yig‘ish, ishga tushirish, nazorat organlariga topshirishda yordam, kafolat va kafolatdan keyingi xizmat."],["Montaj va demontaj","Xavfsiz demontaj, uzel va kabellarni markalash, tashish yoki saqlash uchun qadoqlash, ishlab chiqarish to‘xtab qolishini minimallashtirish."],["Reviziya va xizmat ko‘rsatish","Uskunalar, elektr yuritmalar va avtomatikani davriy tekshirish va sozlash, nosozliklarni o‘z vaqtida aniqlash, xizmat muddatini uzaytirish."],["Stanoklarni modernizatsiya qilish","Yangi uskuna sotib olish o‘rniga mexanika, pnevmo- va gidrotizimlar hamda boshqaruv tizimlarini yangilash."],["Elektronika ta’miri","Komponent darajasida ta’mir: chastota o‘zgartirgichlar, servoyuritmalar, kontrollerlar, panellar, quvvat bloklari. IGBT va modullarni almashtirish, platalarni tiklash."]],
+sp:"Avtomatika komponentlarini yetkazib berish",spp:"Yirik brendlar bilan to‘g‘ridan-to‘g‘ri hamkorlik, ulardan bir nechtasining Turkiya va Rossiyadagi eksklyuziv vakili. Alohida yoki komplekt holida, litsenziyalangan dastur bilan yetkazamiz.",
+su:["Datchiklar, termojuftlar, konsevoy o‘chirgichlar","Tugmalar va o‘chirgichlar","Enkoderlar","Soft-starterlar, starterlar, kontaktorlar","Chastota o‘zgartirgichlar","Servoyuritmalar va drayverlar","Invertorlar va stabilizatorlar","PLK kontrollerlar","Ethernet kommutatorlari","Sensorli boshqaruv panellari","Avtomatik eshik qulflari"],
+br:"Bizni tanlashgan",brp:"Mijozlarimiz orasida yirik ishlab chiqarish va qurilish kompaniyalari bor. Vakolatli servis hamkori: Danfoss, WEG, Vacon, Omron (Rossiya), Siemens, Schneider Electric (Turkiya).",
+ct:"Aloqa",ctp:"So‘rov qoldiring — mutaxassisimiz qo‘ng‘iroq qilib, barcha savollarga javob beradi. Biz yuridik shaxslar bilan ishlaymiz.",em:"Onlayn"}
+};
+var CLIENTS=["OBA Makarna","Pınar","Linde","ZF","Toyota Boshoku","Otokar","SEW Eurodrive","Şişecam","Kale","Prysmian","SICK","Yazaki","Doğuş","Çamsan","Aktül Kağıt","Tırsan","TAV","Balluff","Prometeon","Sakarya OSB"];
+function $(s){return document.querySelector(s)}
+function chips(el,arr){el.innerHTML=arr.map(function(x){return '<span class="chip">'+x+'</span>'}).join('')}
+function cards(el,arr){el.innerHTML=arr.map(function(x){return '<div class="card"><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join('')}
+function setLang(l){
+  var d=T[l];document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(function(e){e.textContent=d[e.dataset.t]});
+  cards($('#about-cards'),d.ac);$('#svc').innerHTML=d.s.map(function(x,i){return '<div class="card cl" onclick="openSvc('+i+')"><h3>'+x[0]+'</h3><p>'+x[1]+'</p><span class="more">'+M[l][0]+'</span></div>'}).join('');chips($('#supply'),d.su);chips($('#clients'),CLIENTS);
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+  var w=WA[l],q='?text='+encodeURIComponent(w[1]);
+  $('#wa-label').textContent=w[0];
+  $('#wa-tr').href='https://wa.me/905395579854'+q;
+  $('#wa-tm').href='https://wa.me/99371815451'+q;
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+var M={ru:["Подробнее →","Закрыть"],en:["Learn more →","Close"],uz:["Batafsil →","Yopish"]};
+var D={
+ru:[
+[["Монтаж промышленного оборудования – это комплекс работ, объединяющий сборку, установку и подключение различных видов техники. Наши мастера могут монтировать как отдельные установки, так и полноценные технологические линии, проводить пуско-наладку и последующее обслуживание.","Процесс монтажа оборудования включает в себя различные этапы: размещение оборудования, установку и подключение проводов, подключение электрических компонентов, установку программного обеспечения, настройку параметров и проверку работоспособности агрегатов.","Наши опытные специалисты своевременно и качественно произведут монтаж и наладку вашего оборудования. А также:"],["Технологичные продукты за фиксированный срок","Проведение исследований","Обратный инжиниринг","Помощь в сборе и аналитике данных вашего оборудования","Обсудим вашу идею или продукт","Подскажем как лучше не делать","Расскажем как сделать высоконагруженное производство за вменяемый бюджет","Мы всегда на связи! Даже когда проект реализован","Мы отвечаем на ваши вопросы очень быстро","У нас огромный опыт и много наработок."],[]],
+[["Промышленному сектору особенно нужны хорошие программисты: на заводах множество машин, установок, насосов и трубопроводов, и для всего этого создаются системы управления и контроля безопасности. Оператору достаточно нажать кнопку, чтобы получить данные с нескольких тысяч датчиков.","Основной опыт связан с контроллерами SIEMENS и OMRON, также работали с DELTA, OWEN, GMT, ABB, SCHNEIDER ELECTRIC, DANFOSS, MITSUBISHI ELECTRIC. Разрабатываем ПО с чистого листа и на основе существующих прошивок, проектируем HMI. Для отладки используем стенд (64 цифровых входа, 64 выхода, 16 аналоговых каналов) и лицензионное ПО: TIA Portal, Simatic Manager, STEP 5 и другое."],[],["Готовы оказать услуги по разработке, интеграции и поставке систем управления для ваших технологических установок."]],
+[["Собираем щиты и шкафы управления автоматики, в том числе для вентиляции и кондиционирования, котельных, насосных станций и систем электроснабжения. В щитах устанавливается аварийная сигнализация и системы предупреждения внештатных ситуаций."],["Разработка ТЗ и подбор комплектующих","Монтажные и пусконаладочные работы","Помощь в сдаче контролирующим органам","Гарантийное и постгарантийное обслуживание","Поставка всех компонентов по оптимальной стоимости"],["Работаем в тесной связке с заказчиком, учитывая все его пожелания."]],
+[["При обновлении или перераспределении производственных мощностей оборудование нужно демонтировать безопасно и без перерасхода бюджета. Мы определяем глубину демонтажа с учётом транспортировки и сроков ввода мощностей в эксплуатацию."],["Планируем последовательность операций, чтобы сократить простой производства","Маркируем узлы, кабели и элементы трубопроводов","Упаковываем элементы на период перевозки или консервации","Соблюдаем стандарты безопасности"],[]],
+[["Ревизия — это комплекс операций по установлению степени износа оборудования или его частей, проверке работоспособности, безопасности и надёжности узлов и деталей.","Периодическая ревизия и наладка оборудования, электроприводов и автоматики обеспечивает непрерывность вашего производства, помогает вовремя выявлять неисправности и значительно продлевает срок службы."],[],[]],
+[["Модернизация — это изменения и усовершенствования, повышающие производительность, точность, безопасность и удобство обслуживания оборудования. Это способ продлить жизнь отслужившему станку, когда покупка нового не по карману. Затрагивает механику, пневмо- и гидросистемы и систему автоматического управления.","Предлагаем комплексный подход или модернизацию отдельных элементов: разрабатываем новую систему управления или дорабатываем существующую на современном оборудовании."],[],[]],
+[["Специализируемся на ремонте на компонентном уровне: восстановление плат после коррозии, механического и термического воздействия, замена дискретных элементов, микросхем, вентиляторов, трансформаторов. Ремонтируем частотные преобразователи, сервоприводы, контроллеры, панели управления и блоки питания."],["Замена и восстановление IGBT и выпрямительных модулей","Восстановление каналов управления","Чистка узлов и блоков с полной разборкой","Параметризация, восстановление рабочих настроек","Пусконаладка","Восстановление дорожек и переходных отверстий"],["Авторизованный сервисный партнёр Danfoss, WEG, Vacon, Omron в России и Siemens, Schneider Electric в Турции. Работаем только с юридическими лицами."]]
+],
+en:[
+[["Installation of industrial equipment is a set of works combining assembly, installation and connection of various machinery. Our technicians can install both individual units and complete production lines, and carry out commissioning and subsequent service.","The process includes several stages: placing the equipment, installing and connecting wiring, connecting electrical components, installing software, setting parameters and testing the units.","Our experienced specialists will install and commission your equipment on time and with quality. We also offer:"],["Technology products delivered by a fixed deadline","Research","Reverse engineering","Help with collecting and analyzing your equipment data","We will discuss your idea or product","We will advise what is better not to do","We will show how to build a high-load production on a reasonable budget","We are always in touch, even after the project is done","We answer your questions very quickly","We have vast experience and many developments."],[]],
+[["The industrial sector especially needs good programmers: plants have many machines, units, pumps and pipelines, and all of them need control and safety systems. An operator just presses a button to get data from thousands of sensors.","Our main experience is with SIEMENS and OMRON controllers; we have also worked with DELTA, OWEN, GMT, ABB, SCHNEIDER ELECTRIC, DANFOSS and MITSUBISHI ELECTRIC. We develop software from scratch or on top of existing firmware and design HMI. For debugging we use a test bench (64 digital inputs, 64 outputs, 16 analog channels) and licensed software: TIA Portal, Simatic Manager, STEP 5 and others."],[],["We provide development, integration and supply of control systems for your production units."]],
+[["We assemble automation control panels and cabinets, including for ventilation and air conditioning, boiler rooms, pumping stations and power supply systems. The panels include alarm systems and systems that warn of abnormal situations."],["Specification and component selection","Installation and commissioning","Help with passing inspections by regulators","Warranty and post-warranty service","Supply of all components at an optimal price"],["We work closely with the customer and take all wishes into account."]],
+[["When production capacity is renewed or redistributed, equipment must be dismantled safely and within budget. We decide how deep the dismantling should go, taking into account transport and commissioning deadlines."],["We plan the sequence of operations to reduce downtime","We mark units, cables and pipeline elements","We pack elements for transport or storage","We follow safety standards"],[]],
+[["Inspection is a set of operations to determine the wear of equipment or its parts and to check performance, safety and reliability of units and components.","Periodic inspection and tuning of equipment, drives and automation keeps your production running, helps detect faults in time and significantly extends service life."],[],[]],
+[["Modernization means changes and improvements that raise performance, accuracy, safety and ease of maintenance. It extends the life of old machines when buying new ones is not affordable. It can cover mechanics, pneumatics, hydraulics and the automatic control system.","We offer a comprehensive approach or modernization of individual elements: we develop a new control system or upgrade the existing one on modern hardware."],[],[]],
+[["We specialize in component-level repair: restoring boards damaged by corrosion, mechanical or thermal impact, replacing discrete elements, chips, fans and transformers. We repair frequency converters, servo drives, controllers, control panels and power supplies."],["IGBT and rectifier module replacement and restoration","Restoration of control channels","Cleaning of units with full disassembly","Parameterization, restoring working settings","Commissioning","Restoring tracks and vias"],["Authorized service partner of Danfoss, WEG, Vacon, Omron in Russia and Siemens, Schneider Electric in Turkey. We work with legal entities only."]]
+],
+uz:[
+[["Sanoat uskunalarini montaj qilish — turli texnikani yig‘ish, o‘rnatish va ulashni birlashtiruvchi ishlar majmuasi. Ustalarimiz alohida qurilmalarni ham, to‘liq texnologik liniyalarni ham o‘rnata oladi, ishga tushirish-sozlash va keyingi xizmat ko‘rsatishni bajaradi.","Montaj jarayoni bir necha bosqichdan iborat: uskunani joylashtirish, simlarni o‘rnatish va ulash, elektr komponentlarni ulash, dasturiy ta’minotni o‘rnatish, parametrlarni sozlash va agregatlar ishlashini tekshirish.","Tajribali mutaxassislarimiz uskunangizni o‘z vaqtida va sifatli montaj qilib, sozlab beradi. Shuningdek:"],["Belgilangan muddatda texnologik mahsulotlar","Tadqiqotlar o‘tkazish","Teskari injiniring","Uskunangiz ma’lumotlarini yig‘ish va tahlil qilishda yordam","G‘oya yoki mahsulotingizni muhokama qilamiz","Nimani qilmaslik kerakligini maslahat beramiz","Oqilona byudjet bilan yuqori yuklangan ishlab chiqarishni qanday yaratishni aytib beramiz","Loyiha tugagandan keyin ham doim aloqadamiz","Savollaringizga juda tez javob beramiz","Bizda katta tajriba va ko‘plab ishlanmalar bor."],[]],
+[["Sanoat sohasi ayniqsa yaxshi dasturchilarga muhtoj: zavodlarda ko‘plab mashinalar, qurilmalar, nasoslar va quvurlar bor, ularning barchasi uchun boshqaruv va xavfsizlik nazorati tizimlari kerak. Operator bitta tugmani bosib, minglab datchiklardan ma’lumot oladi.","Asosiy tajribamiz SIEMENS va OMRON kontrollerlari bilan, shuningdek DELTA, OWEN, GMT, ABB, SCHNEIDER ELECTRIC, DANFOSS, MITSUBISHI ELECTRIC bilan ham ishlaganmiz. Dasturni noldan yoki mavjud proshivkalar asosida yozamiz, HMI loyihalaymiz. Sinov uchun stend (64 raqamli kirish, 64 chiqish, 16 analog kanal) va litsenziyalangan dastur: TIA Portal, Simatic Manager, STEP 5 va boshqalardan foydalanamiz."],[],["Texnologik qurilmalaringiz uchun boshqaruv tizimlarini ishlab chiqish, integratsiya va yetkazib berish xizmatlarini taklif qilamiz."]],
+[["Avtomatika boshqaruv shit va shkaflarini yig‘amiz, jumladan ventilyatsiya va konditsionerlash, qozonxona, nasos stansiyalari va elektr ta’minoti tizimlari uchun. Shitlarga avariya signalizatsiyasi va favqulodda holatlar haqida ogohlantiruvchi tizimlar o‘rnatiladi."],["Texnik topshiriq va butlovchi qismlarni tanlash","Montaj va ishga tushirish-sozlash ishlari","Nazorat organlariga topshirishda yordam","Kafolat va kafolatdan keyingi xizmat","Barcha komponentlarni maqbul narxda yetkazib berish"],["Buyurtmachi bilan yaqin hamkorlikda ishlaymiz va barcha istaklarini inobatga olamiz."]],
+[["Ishlab chiqarish quvvatlari yangilanganda yoki qayta taqsimlanganda uskunani xavfsiz va byudjetni oshirmasdan demontaj qilish kerak. Demontaj chuqurligini tashish va quvvatlarni ishga tushirish muddatlarini hisobga olib belgilaymiz."],["Ishlab chiqarish to‘xtab qolishini kamaytirish uchun amallar ketma-ketligini rejalashtiramiz","Uzellar, kabellar va quvur elementlarini markalaymiz","Elementlarni tashish yoki konservatsiya uchun qadoqlaymiz","Xavfsizlik standartlariga rioya qilamiz"],[]],
+[["Reviziya — uskuna yoki uning qismlarining eskirish darajasini aniqlash, ishlash qobiliyati, xavfsizligi va uzellar ishonchliligini tekshirish bo‘yicha ishlar majmuasi.","Uskuna, elektr yuritma va avtomatikani davriy tekshirish va sozlash ishlab chiqarishingiz uzluksizligini ta’minlaydi, nosozliklarni o‘z vaqtida aniqlashga yordam beradi va xizmat muddatini sezilarli uzaytiradi."],[],[]],
+[["Modernizatsiya — unumdorlik, aniqlik, xavfsizlik va xizmat ko‘rsatish qulayligini oshiradigan o‘zgarish va takomillashtirishlar. Yangi uskuna sotib olish imkoni bo‘lmaganda eski stanokning umrini uzaytiradi. Mexanika, pnevmo- va gidrotizimlar hamda avtomatik boshqaruv tizimiga tatbiq etilishi mumkin.","Kompleks yondashuvni yoki alohida elementlarni modernizatsiya qilishni taklif qilamiz: yangi boshqaruv tizimini ishlab chiqamiz yoki mavjudini zamonaviy uskunada takomillashtiramiz."],[],[]],
+[["Komponent darajasidagi ta’mirga ixtisoslashganmiz: korroziya, mexanik va termik ta’sirdan zarar ko‘rgan platalarni tiklash, diskret elementlar, mikrosxemalar, ventilyatorlar va transformatorlarni almashtirish. Chastota o‘zgartirgichlar, servoyuritmalar, kontrollerlar, boshqaruv panellari va quvvat bloklarini ta’mirlaymiz."],["IGBT va to‘g‘rilagich modullarini almashtirish va tiklash","Boshqaruv kanallarini tiklash","Uzel va bloklarni to‘liq qismlarga ajratib tozalash","Parametrlash, ish sozlamalarini tiklash","Ishga tushirish-sozlash","Yo‘lakchalar va o‘tish teshiklarini tiklash"],["Rossiyada Danfoss, WEG, Vacon, Omron va Turkiyada Siemens, Schneider Electric vakolatli servis hamkoriimiz. Faqat yuridik shaxslar bilan ishlaymiz."]]
+]};
+/* Фото для окон услуг: номер услуги (0 = Монтаж и наладка) -> список файлов. Добавляйте новые имена в список. */
+var PH={0:["fabricstart.jpg"]};
+function openSvc(i){
+  var l=document.documentElement.lang,d=T[l],x=D[l][i],h='<h3>'+d.s[i][0]+'</h3>';
+  var ph=PH[i]||[],ps=x[0].slice(),tl=[],pp=function(a){return a.map(function(t){return '<p>'+t+'</p>'}).join('')};
+  if(ph.length){
+    if(x[1].length)tl=[ps.pop()];
+    h+='<div class="split"><div>'+pp(ps)+'</div><div class="ph">'+ph.map(function(f){return '<img src="'+f+'" alt="'+d.s[i][0]+'" onerror="var q=this.closest(\'.split\');if(q)q.style.gridTemplateColumns=\'1fr\';this.style.display=\'none\'">'}).join('')+'</div></div>'+pp(tl);
+  }else h+=pp(ps);
+  if(x[1].length)h+='<ul>'+x[1].map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul>';
+  x[2].forEach(function(p){h+='<p>'+p+'</p>'});
+  h+='<a class="btn" href="#contacts" onclick="closeSvc()">'+d.cta+'</a>';
+  $('#mbody').innerHTML=h;$('#mbox').classList.toggle('wide',ph.length>0);$('#modal').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeSvc(){$('#modal').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSvc()});
+var WA={ru:["Написать в WhatsApp","Здравствуйте! Хочу узнать об услугах iMAR Group."],en:["Chat on WhatsApp","Hello! I would like to learn about iMAR Group services."],uz:["WhatsApp’da yozish","Assalomu alaykum! iMAR Group xizmatlari haqida bilmoqchiman."]};
+$('#wa-toggle').onclick=function(){$('#wa').classList.toggle('open')};
+document.addEventListener('click',function(e){if(!$('#wa').contains(e.target))$('#wa').classList.remove('open')});
+document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
+var init='ru';try{var s=localStorage.getItem('lang');if(s&&T[s])init=s}catch(e){}
+setLang(init);
+</script>
+</body>
+</html>
