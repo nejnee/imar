@@ -225,12 +225,12 @@ uz:[
 [["Komponent darajasidagi ta’mirga ixtisoslashganmiz: korroziya, mexanik va termik ta’sirdan zarar ko‘rgan platalarni tiklash, diskret elementlar, mikrosxemalar, ventilyatorlar va transformatorlarni almashtirish. Chastota o‘zgartirgichlar, servoyuritmalar, kontrollerlar, boshqaruv panellari va quvvat bloklarini ta’mirlaymiz."],["IGBT va to‘g‘rilagich modullarini almashtirish va tiklash","Boshqaruv kanallarini tiklash","Uzel va bloklarni to‘liq qismlarga ajratib tozalash","Parametrlash, ish sozlamalarini tiklash","Ishga tushirish-sozlash","Yo‘lakchalar va o‘tish teshiklarini tiklash"],["Rossiyada Danfoss, WEG, Vacon, Omron va Turkiyada Siemens, Schneider Electric vakolatli servis hamkoriimiz. Faqat yuridik shaxslar bilan ishlaymiz."]]
 ]};
 /* Фото для окон услуг: номер услуги (0 = Монтаж и наладка) -> список файлов. Добавляйте новые имена в список. */
-var PH={0:["fabricstart.jpg","fabric3.jpg"]};
+var PH={0:["fabricstart.jpg","fabric3.jpg"],3:["demontazh.jpg"]};
 function openSvc(i){
   var l=document.documentElement.lang,d=T[l],x=D[l][i],h='<h3>'+d.s[i][0]+'</h3>';
   var ph=PH[i]||[],ps=x[0].slice(),tl=[],pp=function(a){return a.map(function(t){return '<p>'+t+'</p>'}).join('')};
   if(ph.length){
-    if(x[1].length)tl=[ps.pop()];
+    if(x[1].length&&ps.length>ph.length)tl=[ps.pop()];
     var im=function(f){return '<img src="'+f+'" alt="'+d.s[i][0]+'" onerror="var q=this.closest(\'.split\');if(q)q.style.gridTemplateColumns=\'1fr\';this.style.display=\'none\'">'};
     ph.forEach(function(f,k){h+='<div class="split'+(k%2?' rev':'')+'"><div class="tx">'+(ps[k]?'<p>'+ps[k]+'</p>':'')+'</div><div class="ph">'+im(f)+'</div></div>'});
     h+=pp(ps.slice(ph.length))+pp(tl);
