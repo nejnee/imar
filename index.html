@@ -126,7 +126,8 @@ footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align
       <a href="tel:+905395579854">+90 539 557 9854</a> · <a href="https://wa.me/905395579854">WhatsApp</a><br>
       <a href="tel:+902646143267">0264 614 3267</a></p></div>
     <div class="card"><h3 data-t="em"></h3><p><a href="mailto:imarelektrikgenel@gmail.com">imarelektrikgenel@gmail.com</a><br>
-      <a href="https://www.imargroup.tr" target="_blank" rel="noopener">www.imargroup.tr</a></p></div>
+      <a href="https://www.imargroup.tr" target="_blank" rel="noopener">www.imargroup.tr</a><br>
+      <a href="https://t.me/imargrup" target="_blank" rel="noopener">Telegram: @imargrup</a></p></div>
   </div>
 </div></section>
 
@@ -134,12 +135,12 @@ footer{background:#071135;color:#9aa6cc;padding:26px 0;font-size:14px;text-align
 
 <div class="wa" id="wa">
   <div class="wa-menu">
-    <a id="wa-tr" target="_blank" rel="noopener" href="#">🇹🇷 Türkiye · +90 539 557 9854</a>
-    <a id="wa-tm" target="_blank" rel="noopener" href="#">🇹🇲 Türkmenistan · +993 71 815451</a>
+    <a id="wa-tg" target="_blank" rel="noopener" href="https://t.me/imargrup">✈️ Telegram · @imargrup</a>
+    <a id="wa-tr" target="_blank" rel="noopener" href="#">WhatsApp 🇹🇷 · +90 539 557 9854</a>
   </div>
-  <button class="wa-btn" id="wa-toggle" type="button" aria-label="WhatsApp">
+  <button class="wa-btn" id="wa-toggle" type="button" aria-label="Telegram, WhatsApp">
     <b style="font-size:20px;line-height:1">💬</b>
-    <span id="wa-label">WhatsApp</span>
+    <span id="wa-label">Написать нам</span>
   </button>
 </div>
 
@@ -198,7 +199,6 @@ function setLang(l){
   var w=WA[l],q='?text='+encodeURIComponent(w[1]);
   $('#wa-label').textContent=w[0];
   $('#wa-tr').href='https://wa.me/905395579854'+q;
-  $('#wa-tm').href='https://wa.me/99371815451'+q;
   try{localStorage.setItem('lang',l)}catch(e){}
 }
 var M={ru:["Подробнее →","Закрыть"],en:["Learn more →","Close"],uz:["Batafsil →","Yopish"]};
@@ -257,7 +257,7 @@ function openSup(i){
   $('#mbody').innerHTML='<h3>'+x[0]+'</h3><div class="split"><div class="tx"><p>'+x[1]+'</p></div><div class="ph"><img src="'+SP[i]+'" alt="'+x[0]+'" onerror="var q=this.closest(\'.split\');if(q)q.style.gridTemplateColumns=\'1fr\';this.style.display=\'none\'"></div></div><h4>'+LB[l][0]+'</h4>'+li(x[2])+'<h4>'+LB[l][1]+'</h4>'+li(x[3])+'<a class="btn" href="#contacts" onclick="closeSvc()">'+T[l].cta+'</a>';
   $('#mbox').classList.add('wide');$('#modal').classList.add('open');document.body.style.overflow='hidden';
 }
-var WA={ru:["Написать в WhatsApp","Здравствуйте! Хочу узнать об услугах iMAR Group."],en:["Chat on WhatsApp","Hello! I would like to learn about iMAR Group services."],uz:["WhatsApp’da yozish","Assalomu alaykum! iMAR Group xizmatlari haqida bilmoqchiman."]};
+var WA={ru:["Написать нам","Здравствуйте! Хочу узнать об услугах iMAR Group."],en:["Message us","Hello! I would like to learn about iMAR Group services."],uz:["Bizga yozing","Assalomu alaykum! iMAR Group xizmatlari haqida bilmoqchiman."]};
 $('#wa-toggle').onclick=function(){$('#wa').classList.toggle('open')};
 document.addEventListener('click',function(e){if(!$('#wa').contains(e.target))$('#wa').classList.remove('open')});
 document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
